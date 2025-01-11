@@ -1,6 +1,7 @@
-import { useContext } from "react";
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import AccordionContent from "./AccordionContent";
 import AccordionItem from "./AccordionItem";
+import AccordionTitle from "./AccordionTitle";
 
 const AccordionContext = createContext();
 
@@ -37,3 +38,5 @@ export default function Accordion({ children, className }) {
 
 // we can set attributes to a function, which is in the end an object
 Accordion.Item = AccordionItem;
+Accordion.Title = AccordionTitle;
+Accordion.Content = AccordionContent;
