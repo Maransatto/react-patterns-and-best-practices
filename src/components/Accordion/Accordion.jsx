@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { createContext, useState } from "react";
+import AccordionItem from "./AccordionItem";
 
 const AccordionContext = createContext();
 
@@ -18,18 +19,13 @@ export function useAccordionContext() {
 export default function Accordion({ children, className }) {
   const [openItemId, setOpenItemId] = useState(null);
 
-  function openItem(id) {
-    setOpenItemId(id);
-  }
-
-  function closeItem() {
-    setOpenItemId(null);
+  function toggleItem(id) {
+    setOpenItemId((prevId) => (prevId === id ? null : id));
   }
 
   const contextValue = {
     openItemId: openItemId,
-    openItem,
-    closeItem,
+    toggleItem,
   };
 
   return (
@@ -38,3 +34,6 @@ export default function Accordion({ children, className }) {
     </AccordionContext.Provider>
   );
 }
+
+// we can set attributes to a function, which is in the end an object
+Accordion.Item = AccordionItem;
