@@ -80,9 +80,12 @@ function App() {
       </section>
       <section>
         <SearchableList items={PLACES}>
-          {(item) => <Place item={item} />}
+          {(item) => <Place item={item} itemKeyFn={(item) => item.id} />}
         </SearchableList>
-        <SearchableList items={["Item 1", "Item 2", "Item 3"]}>
+        <SearchableList
+          items={["Item 1", "Item 2", "Item 3"]}
+          itemKeyFn={(item) => item}
+        >
           {(item) => item}
         </SearchableList>
       </section>
